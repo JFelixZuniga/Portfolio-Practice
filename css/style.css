@@ -29,6 +29,7 @@ body {
   background-color: var(--dark);
   -webkit-tap-highlight-color: transparent;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 h1,
 h2,
@@ -67,6 +68,65 @@ img {
 button {
   font-family: inherit;
   font-weight: inherit;
+}
+.btn {
+  background-color: var(--main-color);
+  padding: 9px 35px;
+  font-family: inherit;
+  font-size: 16px;
+  color: var(--white);
+  text-transform: capitalize;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  font-weight: 600;
+}
+.btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: 1px solid var(--white);
+  height: 100%;
+  width: 100%;
+  transform: translate(4px, 4px);
+  transition: transform 0.3s ease;
+}
+@media screen and (min-width: 992px) {
+  .btn:hover:before {
+    transform: translate(0, 0);
+  }
+}
+.close-btn {
+  height: 40px;
+  width: 40px;
+  background-color: var(--dark);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+}
+.close-btn::before,
+.close-btn::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 20px;
+  left: 50%;
+  top: 50%;
+  background-color: var(--white-light);
+  transition: transform 0.3s ease;
+}
+.close-btn::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.close-btn::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.close-btn:hover::before,
+.close-btn:hover::after {
+  transform: translate(-50%, -50%);
 }
 /* Section Title */
 .section-title {
@@ -193,10 +253,14 @@ button {
   text-transform: capitalize;
 }
 /* Portfolio Section */
+.portfolio-section {
+  padding-bottom: 70px;
+}
 .portfolio-filter {
   padding: 0 15px;
   width: 100%;
   text-align: center;
+  margin-bottom: 30px;
 }
 .portfolio-filter-btn {
   padding: 4px 10px;
@@ -215,6 +279,100 @@ button {
   color: var(var(--white));
   cursor: auto;
 }
+.portfolio-item {
+  width: calc((100% / 3) - 30px);
+  margin: 0 15px 30px;
+  cursor: pointer;
+}
+.portfolio-item-thumbnail {
+  position: relative;
+}
+.portfolio-item-thumbnail::before,
+.portfolio-item-thumbnail::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 0%;
+  width: 100%;
+  background-color: var(--dark-light);
+  opacity: 0.8;
+  transition: height 0.3s ease;
+}
+.portfolio-item-thumbnail::before {
+  top: 0;
+}
+.portfolio-item-thumbnail::after {
+  bottom: 0;
+}
+.portfolio-item:hover .portfolio-item-thumbnail::before,
+.portfolio-item:hover .portfolio-item-thumbnail::after {
+  height: 50%;
+}
+.portfolio-item-thumbnail .btn {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%) scale(0.5);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+.portfolio-item:hover .portfolio-item-thumbnail .btn {
+  transition-delay: 0.2s;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+.portfolio-item img {
+  width: 100%;
+}
+.portfolio-item h3 {
+  font-size: 20px;
+  margin: 10px 0 5px;
+  text-transform: capitalize;
+}
 .portfolio-item-details {
   display: none;
+}
+/* Portfolio Popup */
+.portfolio-popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 200;
+}
+.portfolio-popup::before,
+.portfolio-popup::after {
+  content: "";
+  position: absolute;
+  height: 50%;
+  width: 100%;
+  background-color: var(--dark-light);
+  z-index: -1;
+}
+.portfolio-popup::before {
+  top: 0;
+  left: 0;
+}
+.portfolio-popup::after {
+  right: 0;
+  bottom: 0;
+}
+.pp-inner {
+  height: 100vh;
+  padding: 0 15px;
+  overflow: auto;
+}
+.pp-content {
+  max-width: 850px;
+  margin: 50px auto 60px;
+}
+.pp-header {
+  position: relative;
+}
+.pp-close-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
