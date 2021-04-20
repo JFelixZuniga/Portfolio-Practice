@@ -376,3 +376,51 @@ button {
   right: 0;
   top: 0;
 }
+.pp-header p {
+  font-size: 20px;
+  text-transform: capitalize;
+  margin: 0 0 10px;
+  padding-right: 50px;
+}
+.pp-header p span {
+  font-weight: 300;
+}
+.pp-body {
+  padding: 20px 0;
+}
+.pp-body .description {
+  margin: 0 0 30px;
+}
+.pp-body .general-info p {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.pp-body .general-info p span {
+  font-weight: 300;
+  margin-left: 5px;
+}
+.pp-body .general-info a {
+  color: var(--main-color);
+}
+.pp-thumbnail {
+  padding: 20px 0;
+}
+.pp-footer {
+  padding: 40px 0 0;
+  display: flex;
+}
+.pp-footer-left,
+.pp-footer-right {
+  flex: 1;
+}
+.pp-footer-right {
+  text-align: right;
+}
+.pp-footer h3 {
+  font-size: 20px;
+  text-transform: capitalize;
+  margin: 30px 0 15px;
+}
+.pp-footer img {
+  max-width: 120px;
+}
